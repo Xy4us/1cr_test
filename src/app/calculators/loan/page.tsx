@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import { Minus, Plus } from "lucide-react";
@@ -8,7 +8,7 @@ import { SliderRow, CalcLayout, fmt } from "@/components/calculators/shared";
 
 const PIE_COLORS = ["#2d6a4f", "#e5e7eb"];
 
-export default function LoanCalculator() {
+function LoanCalculatorContent() {
     const searchParams = useSearchParams();
     const type = (searchParams.get("type") as "personal" | "home" | "car") || "personal";
 
@@ -28,7 +28,7 @@ export default function LoanCalculator() {
         setPrincipal(d.principal);
         setRate(d.rate);
         setTenure(d.tenure);
-    }, [type]);
+    }, [type, d.principal, d.rate, d.tenure]);
 
     const emi = calculateEMI(principal, rate, tenure);
     const total = emi * tenure;
@@ -97,5 +97,13 @@ export default function LoanCalculator() {
                 </div>
             </div>
         </CalcLayout>
+    );
+}
+
+export default function LoanCalculator() {
+    return (
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading calculator...</div>}>
+            <LoanCalculatorContent />
+        </Suspense>
     );
 }
