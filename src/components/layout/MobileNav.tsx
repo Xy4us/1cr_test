@@ -15,7 +15,7 @@ export function MobileNav() {
 
     return (
         <nav
-            className="lg:hidden fixed bottom-0 left-0 right-0 z-50 border-t"
+            className="sm:hidden fixed bottom-0 left-0 right-0 z-50 border-t"
             style={{
                 backgroundColor: "#1a2e23",
                 borderColor: "#243d2f",

@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { calculateEMI } from "@/lib/calculations";
 import { toast } from "sonner";
+import { PageContainer } from "@/components/layout/PageContainer";
 
 const filterChips = ["All", "Mortgage", "Personal Loan", "Credit Card", "Auto Loan"];
 const debtTypes = ["Mortgage", "Personal Loan", "Credit Card", "Auto Loan", "Education Loan", "Business Loan", "Other"];
@@ -98,14 +99,20 @@ export default function DebtsPage() {
                 }
             />
 
-            <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="px-4 lg:px-8 py-6 max-w-5xl space-y-6">
-                {/* Summary Card */}
+            <PageContainer className="py-6">
                 <motion.div
-                    variants={fadeUp}
-                    custom={0}
-                    className="rounded-2xl p-6 relative overflow-hidden"
-                    style={{ background: "linear-gradient(135deg, #ef4444 0%, #2d6a4f 100%)" }}
+                    variants={staggerContainer}
+                    initial="hidden"
+                    animate="visible"
+                    className="space-y-6"
                 >
+                    {/* Summary Card */}
+                    <motion.div
+                        variants={fadeUp}
+                        custom={0}
+                        className="rounded-2xl p-6 relative overflow-hidden"
+                        style={{ background: "linear-gradient(135deg, #ef4444 0%, #2d6a4f 100%)" }}
+                    >
                     <p className="text-xs uppercase tracking-widest text-white/70 mb-2">Total Outstanding</p>
                     <p className="text-4xl font-bold font-mono text-white mb-4">{formatRupee(totalOutstanding)}</p>
                     <div className="flex gap-6">
@@ -180,7 +187,8 @@ export default function DebtsPage() {
                         </div>
                     )}
                 </motion.div>
-            </motion.div>
+                </motion.div>
+            </PageContainer>
 
             <FAB label="Payoff Strategy" icon={TrendingDown} color="blue" onClick={() => toast.info("Navigate to Scenario Analysis to plan payoff!")} />
 

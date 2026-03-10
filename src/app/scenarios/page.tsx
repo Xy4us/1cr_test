@@ -17,6 +17,7 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { calculateAvalanchePayoff, calculateSIP } from "@/lib/calculations";
+import { PageContainer } from "@/components/layout/PageContainer";
 
 const fmt = (n: number) => `₹${Math.round(n).toLocaleString("en-IN")}`;
 
@@ -273,7 +274,7 @@ export default function ScenariosPage() {
         <div className="min-h-screen" style={{ backgroundColor: "#f4f7f5" }}>
             <PageHeader title="Scenario Analysis" />
 
-            <div className="px-4 lg:px-8 py-6 max-w-5xl">
+            <PageContainer className="py-6">
                 <div className="flex gap-2 mb-6 flex-wrap">
                     {tabs.map((tab) => (
                         <button
@@ -300,7 +301,7 @@ export default function ScenariosPage() {
                 >
                     {tabs.find(t => t.id === activeTab)?.component}
                 </motion.div>
-            </div>
+            </PageContainer>
         </div>
     );
 }

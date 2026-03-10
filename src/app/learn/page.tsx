@@ -5,6 +5,7 @@ import { GraduationCap } from "lucide-react";
 import { staggerContainer, fadeUp } from "@/lib/animations";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Button } from "@/components/ui/button";
+import { PageContainer } from "@/components/layout/PageContainer";
 
 const assets = [
     {
@@ -106,27 +107,29 @@ export default function LearnPage() {
             <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="relative overflow-hidden px-4 lg:px-8 py-10"
+                className="relative overflow-hidden"
                 style={{ background: "linear-gradient(135deg, #1a2e23 0%, #2d6a4f 100%)" }}
             >
-                <div className="absolute right-8 top-8 text-7xl opacity-10">🎓</div>
-                <h2 className="text-2xl font-bold text-white mb-1">Build Your Knowledge</h2>
-                <p className="text-sm text-green-200/70 mb-4">Explore asset classes and make informed decisions</p>
-                <div className="flex items-center gap-3">
-                    <span className="text-sm text-white font-mono">{learned.length}/{assets.length}</span>
-                    <div className="flex-1 max-w-48 h-2 rounded-full bg-white/20">
-                        <div
-                            className="h-2 rounded-full bg-white transition-all"
-                            style={{ width: `${(learned.length / assets.length) * 100}%` }}
-                        />
+                <PageContainer size="wide" className="py-10">
+                    <div className="absolute right-8 top-8 text-7xl opacity-10">🎓</div>
+                    <h2 className="text-2xl font-bold text-white mb-1">Build Your Knowledge</h2>
+                    <p className="text-sm text-green-200/70 mb-4">Explore asset classes and make informed decisions</p>
+                    <div className="flex items-center gap-3">
+                        <span className="text-sm text-white font-mono">{learned.length}/{assets.length}</span>
+                        <div className="flex-1 max-w-48 h-2 rounded-full bg-white/20">
+                            <div
+                                className="h-2 rounded-full bg-white transition-all"
+                                style={{ width: `${(learned.length / assets.length) * 100}%` }}
+                            />
+                        </div>
+                        <span className="text-xs text-white/60">Modules completed</span>
                     </div>
-                    <span className="text-xs text-white/60">Modules completed</span>
-                </div>
+                </PageContainer>
             </motion.div>
 
             {/* Tabs */}
-            <div className="px-4 lg:px-8 pt-5">
-                <div className="flex gap-2">
+            <PageContainer size="wide" className="pt-5">
+                <div className="flex gap-2 flex-wrap">
                     {["overview", "compare", "learn"].map((tab) => (
                         <button
                             key={tab}
@@ -142,9 +145,15 @@ export default function LearnPage() {
                         </button>
                     ))}
                 </div>
-            </div>
+            </PageContainer>
 
-            <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="px-4 lg:px-8 py-6 max-w-5xl space-y-4">
+            <PageContainer className="py-6">
+                <motion.div
+                    variants={staggerContainer}
+                    initial="hidden"
+                    animate="visible"
+                    className="space-y-4"
+                >
                 {assets.map((asset, i) => (
                     <motion.div
                         key={asset.name}
@@ -214,7 +223,8 @@ export default function LearnPage() {
                         </div>
                     </motion.div>
                 ))}
-            </motion.div>
+                </motion.div>
+            </PageContainer>
         </div>
     );
 }

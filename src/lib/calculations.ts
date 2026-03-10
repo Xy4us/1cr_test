@@ -31,6 +31,11 @@ export function calculateEMI(
     );
 }
 
+// Pre-EMI Calculator (Interest-only monthly payment)
+export function calculatePreEMI(disbursedAmount: number, annualRate: number): number {
+    return (disbursedAmount * (annualRate / 100)) / 12;
+}
+
 // SIP Future Value
 export function calculateSIP(
     monthly: number,
