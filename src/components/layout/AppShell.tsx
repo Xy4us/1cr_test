@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Sidebar } from "@/components/layout/Sidebar";
+import { Header } from "@/components/layout/Header";
 import { useSidebar } from "@/components/layout/SidebarContext";
 import { cn } from "@/lib/utils";
 
@@ -13,16 +14,21 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       {/* SIDEBAR */}
       <Sidebar />
 
-      {/* MAIN CONTENT */}
-      <main
+      {/* RIGHT SIDE AREA */}
+      <div
         className={cn(
-          "flex-1 min-w-0 overflow-y-auto pb-16 lg:pb-0 transition-[margin-left] duration-200",
-          // No sidebar margin on mobile; icon-rail on larger screens when collapsed.
-          collapsed ? "ml-0 sm:ml-[72px]" : "ml-0 sm:ml-[220px]",
+          "flex flex-col flex-1 min-w-0 transition-all duration-300 ease-in-out",
+          collapsed ? "pl-[72px]" : "pl-[240px]",
         )}
       >
-        {children}
-      </main>
+        {/* HEADER */}
+        <Header />
+
+        {/* MAIN CONTENT */}
+        <main className="flex-1 min-w-0 overflow-y-auto px-4 sm:px-6 pt-8 pb-12">
+          {children}
+        </main>
+      </div>
     </div>
   );
 }

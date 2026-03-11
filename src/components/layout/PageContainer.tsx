@@ -23,9 +23,7 @@ export function PageContainer({
 
   const widthClass =
     size === "wide"
-      ? collapsed
-        ? "max-w-[1440px]"
-        : "max-w-7xl"
+      ? "max-w-[1920px] 2xl:max-w-[2400px]"
       : collapsed
         ? "max-w-[1200px]"
         : "max-w-5xl lg:max-w-6xl";
@@ -33,7 +31,7 @@ export function PageContainer({
   return (
     <div
       className={cn(
-        "mx-auto w-full px-4 sm:px-6 lg:px-8",
+        "mx-auto w-full px-2 sm:px-4",
         widthClass,
         className,
       )}

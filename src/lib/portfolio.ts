@@ -60,16 +60,35 @@ export const LIABILITY_META: Record<
 };
 
 export const DUMMY_ASSETS: Asset[] = [
-  { id: "a1", name: "NIFTY 50 Index Fund", category: "mutual_funds", currentValue: 185000, purchasePrice: 150000, purchaseDate: "2024-04-12", liquid: true },
-  { id: "a2", name: "HDFC Bank Shares", category: "stocks", currentValue: 92000, purchasePrice: 76000, purchaseDate: "2024-08-03", liquid: true },
-  { id: "a3", name: "Sovereign Gold Bond", category: "gold", currentValue: 64000, purchasePrice: 52000, purchaseDate: "2023-11-20", liquid: true },
-  { id: "a4", name: "SBI Fixed Deposit", category: "fd", currentValue: 110000, purchasePrice: 100000, purchaseDate: "2025-01-10", liquid: false },
+  // Stocks
+  { id: "a1", name: "HDFC Bank Ltd.", category: "stocks", currentValue: 145000, purchasePrice: 112000, purchaseDate: "2024-02-10", liquid: true },
+  { id: "a2", name: "Reliance Industries", category: "stocks", currentValue: 198000, purchasePrice: 165000, purchaseDate: "2023-08-15", liquid: true },
+  { id: "a3", name: "Tata Motors Ltd.", category: "stocks", currentValue: 87000, purchasePrice: 72000, purchaseDate: "2024-05-20", liquid: true },
+  // Mutual Funds
+  { id: "a4", name: "NIFTY 50 Index Fund", category: "mutual_funds", currentValue: 285000, purchasePrice: 230000, purchaseDate: "2023-04-12", liquid: true },
+  { id: "a5", name: "Mirae Asset Large Cap", category: "mutual_funds", currentValue: 163000, purchasePrice: 140000, purchaseDate: "2024-01-08", liquid: true },
+  { id: "a6", name: "SBI Bluechip Fund", category: "mutual_funds", currentValue: 91000, purchasePrice: 80000, purchaseDate: "2024-06-15", liquid: true },
+  // Gold
+  { id: "a7", name: "Sovereign Gold Bond 2023", category: "gold", currentValue: 148000, purchasePrice: 118000, purchaseDate: "2023-11-20", liquid: true },
+  // Fixed Deposits
+  { id: "a8", name: "SBI Fixed Deposit 1Y", category: "fd", currentValue: 250000, purchasePrice: 230000, purchaseDate: "2024-09-10", liquid: false },
+  { id: "a9", name: "ICICI Bank FD 2Y", category: "fd", currentValue: 115000, purchasePrice: 100000, purchaseDate: "2024-03-01", liquid: false },
+  // Real Estate
+  { id: "a10", name: "Residential Flat – Pune", category: "real_estate", currentValue: 4200000, purchasePrice: 3500000, purchaseDate: "2021-06-10", liquid: false },
+  // Bonds
+  { id: "a11", name: "RBI Floating Rate Bond", category: "bonds", currentValue: 200000, purchasePrice: 195000, purchaseDate: "2024-07-01", liquid: false },
+  // Other / NPS  
+  { id: "a12", name: "NPS Tier-1 Account", category: "other", currentValue: 320000, purchasePrice: 240000, purchaseDate: "2022-01-01", liquid: false },
+  // Crypto
+  { id: "a13", name: "Bitcoin (0.012 BTC)", category: "crypto", currentValue: 68000, purchasePrice: 35000, purchaseDate: "2023-03-15", liquid: true },
 ];
 
 export const DUMMY_LIABILITIES: Liability[] = [
   { id: "l1", name: "HDFC Home Loan", category: "home_loan", currentBalance: 3500000, interestRate: 8.5, dueDate: "2025-04-05" },
   { id: "l2", name: "ICICI Car Loan", category: "car_loan", currentBalance: 450000, interestRate: 9.2, dueDate: "2025-04-10" },
-  { id: "l3", name: "SBI Credit Card", category: "credit_card", currentBalance: 12500, interestRate: 36, dueDate: "2025-03-25" },
+  { id: "l3", name: "SBI Credit Card", category: "credit_card", currentBalance: 28500, interestRate: 36, dueDate: "2025-03-25" },
+  { id: "l4", name: "HDFC Credit Card", category: "credit_card", currentBalance: 14200, interestRate: 40.8, dueDate: "2025-04-02" },
+  { id: "l5", name: "Bajaj Finserv Personal Loan", category: "personal_loan", currentBalance: 180000, interestRate: 14.5, dueDate: "2025-04-15" },
 ];
 
 export function sumAssets(assets: Asset[]) {

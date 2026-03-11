@@ -63,7 +63,6 @@
 // }
 
 import type { Metadata } from "next";
-import { MobileNav } from "@/components/layout/MobileNav";
 import { Toaster } from "@/components/ui/sonner";
 import { SidebarProvider } from "@/components/layout/SidebarContext";
 import { AppShell } from "@/components/layout/AppShell";
@@ -110,9 +109,6 @@ export default function RootLayout({
             <AppShell>{children}</AppShell>
           </SidebarProvider>
         </StoreProvider>
-
-        {/* MOBILE NAV */}
-        <MobileNav />
 
         {/* TOAST */}
         <Toaster richColors position="top-right" />

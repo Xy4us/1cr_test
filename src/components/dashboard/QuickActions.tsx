@@ -1,64 +1,48 @@
 "use client";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import {
-    Target,
-    Shield,
-    Calculator,
-    Briefcase,
-    CreditCard,
-    TrendingUp,
-    FlaskConical,
-    BookOpen,
-} from "lucide-react";
+
+import React from "react";
+import { PlusCircle, MinusCircle, Target, FileText, Shield, Calculator, FlaskConical, BookOpen } from "lucide-react";
 
 const actions = [
-    { label: "Update Goals", icon: Target, href: "/goals", color: "#d8f3dc", iconColor: "#2d6a4f" },
-    { label: "Protection", icon: Shield, href: "/learn", color: "#fff3e0", iconColor: "#f4a261" },
-    { label: "Calculators", icon: Calculator, href: "/calculators", color: "#e8f4fd", iconColor: "#3d5af1" },
-    { label: "Assets", icon: Briefcase, href: "/portfolio", color: "#f0e8fd", iconColor: "#7c3aed" },
-    { label: "Liabilities", icon: CreditCard, href: "/debts", color: "#ffe8e8", iconColor: "#ef4444" },
-    { label: "Net Worth", icon: TrendingUp, href: "/portfolio", color: "#d8f3dc", iconColor: "#2d6a4f" },
-    { label: "Run Scenario", icon: FlaskConical, href: "/scenarios", color: "#e8f4fd", iconColor: "#3d5af1" },
-    { label: "Learn Assets", icon: BookOpen, href: "/learn", color: "#fff3e0", iconColor: "#f4a261" },
+  { label: "Add Asset", icon: PlusCircle, color: "#2d6a4f" },
+  { label: "Add Debt", icon: MinusCircle, color: "#ef4444" },
+  { label: "New Goal", icon: Target, color: "#8b5cf6" },
+  { label: "Tax Rep", icon: FileText, color: "#3b82f6" },
+  { label: "Insurance", icon: Shield, color: "#f59e0b" },
+  { label: "Calculate", icon: Calculator, color: "#06b6d4" },
+  { label: "Scenarios", icon: FlaskConical, color: "#ec4899" },
+  { label: "Learn", icon: BookOpen, color: "#10b981" },
 ];
 
 export function QuickActions() {
-    return (
-        <div>
-            <h2 className="text-base font-semibold mb-4" style={{ color: "#1a1a1a" }}>
-                Quick Actions
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                {actions.map((action) => {
-                    const Icon = action.icon;
-                    return (
-                        <Link key={action.label} href={action.href}>
-                            <motion.div
-                                whileHover={{ y: -2, boxShadow: "0 8px 32px rgba(45,106,79,0.15)" }}
-                                whileTap={{ scale: 0.98 }}
-                                className="flex flex-col items-center gap-3 p-4 rounded-2xl cursor-pointer"
-                                style={{
-                                    backgroundColor: "#ffffff",
-                                    boxShadow: "var(--shadow-card)",
-                                    border: "1px solid #e5e7eb",
-                                    transition: "all 0.2s ease",
-                                }}
-                            >
-                                <div
-                                    className="w-12 h-12 rounded-xl flex items-center justify-center"
-                                    style={{ backgroundColor: action.color }}
-                                >
-                                    <Icon size={22} color={action.iconColor} />
-                                </div>
-                                <span className="text-xs font-semibold text-center" style={{ color: "#1a1a1a" }}>
-                                    {action.label}
-                                </span>
-                            </motion.div>
-                        </Link>
-                    );
-                })}
+  return (
+    <div className="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm relative overflow-hidden group">
+      <div className="flex items-center justify-between mb-6">
+        <h3 className="text-gray-900 text-sm font-black uppercase tracking-tight">Quick Actions</h3>
+        <span className="text-[10px] text-gray-400 font-medium">Common tasks</span>
+      </div>
+      
+      <div className="flex flex-wrap lg:flex-nowrap items-center justify-between gap-4 relative z-10">
+        {actions.map((action) => (
+          <button 
+            key={action.label}
+            className="flex flex-col items-center gap-2 group/btn flex-1 min-w-[70px] max-w-[100px]"
+          >
+            <div 
+              className="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover/btn:scale-110 group-hover/btn:shadow-lg shadow-[#00000005] ring-1 ring-white/50"
+              style={{ backgroundColor: `${action.color}10`, color: action.color }}
+            >
+              <action.icon size={20} />
             </div>
-        </div>
-    );
+            <span className="text-[10px] font-bold text-gray-500 group-hover/btn:text-gray-900 transition-colors uppercase tracking-widest text-center">
+              {action.label}
+            </span>
+          </button>
+        ))}
+      </div>
+      
+      {/* Background decoration */}
+      <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-[#2d6a4f]/5 rounded-full blur-3xl transition-colors group-hover:bg-[#2d6a4f]/10" />
+    </div>
+  );
 }
